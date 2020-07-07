@@ -1,25 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import Header from './components/header/header';
 import './App.css';
+import Loaderspinner from './components/loaderspinner/LoaderSpinner';
+import Character from './components/character/character';
 
 function App() {
+  const isLoading = false;
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <Router>
+    <div className="App container">
+      { isLoading ? <Loaderspinner /> : null }
+        <Header></Header>
+        <div className='character-list'>
+          <Character name="Lisa" />
+          <Character name="Bart" />
+          <Character name="Homer" />
+        </div>
     </div>
+
+    </Router>
   );
 }
 
