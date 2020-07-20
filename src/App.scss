@@ -214,43 +214,6 @@ header{
 
 .rightAns{background:rgb(24,123,57) !important;}
 
-.btn-answer{
-  background: url(/assets/images/funky-button.svg) no-repeat;
-  background-size: 100% auto;
-  min-height: 58px;
-  width: 70%;
-  border-radius: 5px;
-  font-weight:bold;
-  font-size:1.2em;
-  margin: 0 5px 10px;
-  color:white;
-  text-shadow: 0 0px 1px black,
-                0 0px 1px black,
-                0 0px 1px black,
-                -1px 1px 0px black,
-                -1px 1px 0px black;
-}
-
-.btn-answer.btn:hover{
-	color:white;
-}
-
-.btn-answer.btn[disabled] {
-  background: url(/assets/images/funky-button.svg) no-repeat;
-  background-size: 100% auto;
-  pointer-events: none;
-  cursor: not-allowed;
-  filter: alpha(opacity=1) !important;
-  opacity: 1 !important;
-  color:white;	
-}
-
-.btn-answer.active, .btn-answer:active{
-	background: url(/assets/images/funky-button-over.svg) no-repeat;
-  background-size: 100% auto;
-  box-shadow: none;
-}
-
 .btChoice.btn[disabled] {
   background: url(/assets/images/funky-button-over.svg) no-repeat;
   background-size: 100% auto;
