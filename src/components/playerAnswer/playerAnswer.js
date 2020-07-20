@@ -5,9 +5,6 @@ function PlayerAnswer({answerQuestion, selectedAnswer, clickable}) {
 
     const [answerClass, setAnswerClass] = useState(selectedAnswer);
 
-    //let answerClass = selectedAnswer;
-    console.log('answerClass:',answerClass);
-
     const handleClickA = () => {
         if (clickable && answerQuestion) {
             setAnswerClass('answer1');
@@ -23,7 +20,6 @@ function PlayerAnswer({answerQuestion, selectedAnswer, clickable}) {
     }
 
     useEffect(() => { 
-        console.log("component updated");
         setAnswerClass(selectedAnswer);
     }, [selectedAnswer]);
 

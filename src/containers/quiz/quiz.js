@@ -23,7 +23,8 @@ function Quiz() {
         computer: 0
     });
 
-    let [computerAnswer, setComputerAnswer] = useState('oque');
+    let [computerAnswer, setComputerAnswer] = useState('');
+    let [playerAnswer, setPlayerAnswer] = useState('');
 
     let [questionCounter, setQuestionCounter] = useState(0);
     
@@ -43,35 +44,56 @@ function Quiz() {
     }, []);
 
     function answerQuestion(answer) {
+            setPlayerAnswer(answer);
+            chooseComputerAnswer();
+            checkAnswers();
+            updateScores();
 
+            //setQuestionCounter(questionCounter += 1);
+
+    }
+
+    function checkAnswers() {
+        if (isAnswerCorrect(playerAnswer)) {
+            console.log('Player correct Answer');
+        };
+    
+        if(isAnswerCorrect(computerAnswer)) {
+            console.log('computer correct Answer');
+        }
+    }
+
+
+    function isAnswerCorrect(answer) {
         if(answer === questions[questionCounter].correctAnswer) {
             console.log('correct');
+            return true;
         } else {
             console.log('wrong');
+            return false
         }
-
-        chooseComputerAnswer();
     }
+
+    function updateScores() {
+        console.log('updating scores')
+    }
+
+    
 
     function chooseComputerAnswer() {
         const rnd = Math.floor(Math.random() * 2);
-        console.log('result:', rnd);
 
         switch (rnd) {
             case 0:
                 setComputerAnswer('answer1');
-                console.log('curr comp answer1: ', computerAnswer);
             break;
             case 1:
                 setComputerAnswer('answer2');
-                console.log('curr comp answer2: ', computerAnswer);
             break;
         
             default:
                 break;
         }
-
-        setQuestionCounter(questionCounter += 1);
     }
 
 
@@ -111,7 +133,7 @@ function Quiz() {
                                     </div>
 
                                     <div className="col-md-6">
-                                        <Player></Player>
+                                        <Player score={quizScore.player}></Player>
                                     </div>
 
                                 </div>
