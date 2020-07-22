@@ -15,6 +15,7 @@
     display:none;
     position:absolute;
     z-index:5;
+    font-size: 18px;
 
     &.show {
         display: block;
@@ -22,6 +23,8 @@
     &.hide {
         display: none;
     }
+
+    &.right { background:rgb(24,123,57) !important;}
 
   }
   

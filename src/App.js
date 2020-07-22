@@ -5,6 +5,7 @@ import Homepage from './containers/homepage/homepage';
 import Quiz from './containers/quiz/quiz';
 import './App.scss';
 import Loaderspinner from './components/loaderspinner/LoaderSpinner';
+import SelectAvatar from './containers/selectAvatar/selectAvatar';
 
 function App() {
   let isLoading = false;
@@ -18,7 +19,8 @@ function App() {
     </div>
     <Switch>
       <Route exact path='/' component={Homepage} />
-      <Route path='/trivia' component={Quiz} />
+      <Route path='/trivia/:playerName' component={Quiz} />
+      <Route path='/selectAvatar' component={SelectAvatar} />
     </Switch>
     </Router>
   );

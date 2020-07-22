@@ -1,0 +1,41 @@
+@import '../../index.scss';
+
+.avatar {
+
+    border: 2px solid white;
+    border-radius: 5px;
+    box-shadow: 1px 1px 0 black;
+
+    &-name {
+        padding: 2px;
+        background: white;
+        border-bottom-left-radius: 3px;
+        border-bottom-right-radius: 3px;
+        max-width: 70px;
+        max-height: 70px;
+        font-size: 12px;
+    }
+
+    &-picture {
+        padding: 5px;
+        background: white;
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        box-shadow: black;
+        max-width: 70px;
+        max-height: 70px;
+        min-width: 70px;
+    
+        img {
+            height: 100%;
+            max-height: 60px;
+            min-height: 60px;
+            max-width: 100%;
+        }
+    }
+}
+
+.avatar:hover {
+    border: 2px solid $blue;
+}
+

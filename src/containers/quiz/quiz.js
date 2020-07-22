@@ -5,8 +5,12 @@ import PlayerAnswer from '../../components/playerAnswer/playerAnswer';
 import Loaderspinner from '../../components/loaderspinner/LoaderSpinner';
 import AnswerBadge from '../../components/answerBadge/answerbadge';
 import './quiz.css';
+import { useParams } from "react-router";
 
 function Quiz() {
+
+    let { playerName } = useParams();
+
     const initialState = {
         score: {
          player: 0,
@@ -144,7 +148,11 @@ function Quiz() {
     }
 
     function nextQuestion(){
-        dispatch({type:'INCREMENT_QUESTION_COUNTER'});
+        if ((state.questionCounter +1) === questions.length) {
+            console.log('ir pro final page')
+        } else {
+            dispatch({type:'INCREMENT_QUESTION_COUNTER'});
+        }
     }
 
     
@@ -205,7 +213,7 @@ function Quiz() {
                                     </div>
 
                                     <div className="col-md-6">
-                                        <Player score={state.score.player}></Player>
+                                        <Player score={state.score.player} playerName={playerName}></Player>
                                     </div>
 
                                 </div>

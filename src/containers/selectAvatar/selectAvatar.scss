@@ -1,0 +1,15 @@
+.selectAvatar {
+    &-Avatar_list {
+        display: flex;
+        flex-wrap: wrap;
+
+        &-item {
+            margin-bottom: 4px;
+            margin-right: 4px;
+        }
+
+        &-item:hover {
+            cursor: pointer;
+        }
+    }
+}
