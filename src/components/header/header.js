@@ -6,8 +6,8 @@ function Header() {
         <header>
             <div className="row">
                 <div className="col-12 header">
-                    <img src="/assets/images/logo-simpsons.png" className="logo" alt="" />
-                    <h2 className="text-center">Super Trivia battle</h2>
+                    <img src="/assets/images/logo-simpsons.png" className="logo animate__animated  animate__zoomIn animate__slow " alt="" />
+                    <h2 className="text-center animate__animated animate__zoomInDown animate__slow">Super Trivia battle</h2>
                 </div>
             </div>
         </header>
