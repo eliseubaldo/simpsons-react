@@ -4,12 +4,14 @@ import Player from '../../components/player/player';
 import PlayerAnswer from '../../components/playerAnswer/playerAnswer';
 import Loaderspinner from '../../components/loaderspinner/LoaderSpinner';
 import AnswerBadge from '../../components/answerBadge/answerbadge';
+import avatars from '../../constants/avatars';
 import './quiz.css';
 import { useParams } from "react-router";
 
 function Quiz() {
 
-    let { playerName } = useParams();
+    let { playerName, avatarId } = useParams();
+
 
     const initialState = {
         score: {
@@ -25,6 +27,19 @@ function Quiz() {
     };
 
     const [state, dispatch] = useReducer(reducer,initialState, init);
+
+    const [questions, setQuestions] = useState([{
+        question: null,
+        answer1: null,
+        answer2: null,
+        correctAnswer: null
+    }]);
+
+    const [loading, setLoading] = useState(true);
+
+    const [playerAvatar, setPlayerAvatar] = useState();
+
+    const [computerAvatar, setComputerAvatar] = useState();
 
     function init(initialState) {
         return {
@@ -64,15 +79,6 @@ function Quiz() {
         }
     }
     
-    const [questions, setQuestions] = useState([{
-        question: null,
-        answer1: null,
-        answer2: null,
-        correctAnswer: null
-    }]);
-
-    const [loading, setLoading] = useState(true);
-    
     useEffect(() => {
         const baseURL = 'https://marvelheroes-1d22.restdb.io/rest/simpsons-trivia';
         const headers = {
@@ -86,8 +92,20 @@ function Quiz() {
             setLoading(false);
             console.log(data);
             
-        })
-    }, []);
+        });
+        
+        function chooseComputerAvatar() {
+            const rnd = Math.floor(Math.random() * avatars.length);
+            setComputerAvatar(avatars[rnd]);
+        }
+
+        chooseComputerAvatar();
+
+        const avatar = avatars.find(char => char.charname === avatarId);
+        setPlayerAvatar(avatar);
+
+
+    }, [avatarId]);
 
 
     function handleAnswerQuestion(playerAnswer) {
@@ -196,7 +214,7 @@ function Quiz() {
                                 <div className="row">
                                     <AnswerBadge status={state.computerAnswerState}></AnswerBadge>
                                     <div className="col-md-6">
-                                        <Player score={state.score.computer}></Player>
+                                        <Player score={state.score.computer} avatar={computerAvatar}></Player>
                                     </div>
                                     <div className="col-md-6">
                                         <PlayerAnswer selectedAnswer={state.computerAnswer} clickable={false}></PlayerAnswer>
@@ -213,7 +231,7 @@ function Quiz() {
                                     </div>
 
                                     <div className="col-md-6">
-                                        <Player score={state.score.player} playerName={playerName}></Player>
+                                        <Player score={state.score.player} playerName={playerName} avatar={playerAvatar}></Player>
                                     </div>
 
                                 </div>

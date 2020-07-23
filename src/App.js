@@ -19,7 +19,7 @@ function App() {
     </div>
     <Switch>
       <Route exact path='/' component={Homepage} />
-      <Route path='/trivia/:playerName' component={Quiz} />
+      <Route path='/trivia/:playerName/:avatarId' component={Quiz} />
       <Route path='/selectAvatar' component={SelectAvatar} />
     </Switch>
     </Router>

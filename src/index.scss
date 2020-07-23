@@ -3,12 +3,27 @@
 @import "~animate.css/animate.min.css";
 
 html {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
+  width:100%;
+  height:auto;
+  min-height:100%;
+  margin: 0px;
+  padding: 0px;
+  }
+
+body{
+	background-image:  url(/assets/images/clouds.png), url(/assets/images/power-plant.jpg);
+	background-repeat: no-repeat, no-repeat;
+	background-position: top center, bottom center;
+	background-size: 100% auto;
+	font-size: 1.5em;
+	font-family: 'Varela Round', sans-serif;
+	background-color: #8ed4f8;
+
+
 
 }
+
+
 
 /* Colors */
 $yellow: #FECB00;
@@ -18,3 +33,4 @@ $gray:#4D5357;
 $green:#BDE18A;
 $bluelight:#72C7E7;
 $brown:#B3995D;
+$pink: #ff81c1;

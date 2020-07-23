@@ -1,7 +1,11 @@
+@import '../../index.scss';
+
 .selectAvatar {
     &-Avatar_list {
         display: flex;
         flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
 
         &-item {
             margin-bottom: 4px;
@@ -12,4 +16,18 @@
             cursor: pointer;
         }
     }
+
+    &-playerData {
+        background-color: rgba($color: white, $alpha: 0.5);
+        border-radius: 5px;
+        padding-top: 20px;
+    }
+
+    &-avatar-card {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    
 }
