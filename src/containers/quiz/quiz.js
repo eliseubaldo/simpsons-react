@@ -5,12 +5,19 @@ import PlayerAnswer from '../../components/playerAnswer/playerAnswer';
 import Loaderspinner from '../../components/loaderspinner/LoaderSpinner';
 import AnswerBadge from '../../components/answerBadge/answerbadge';
 import avatars from '../../constants/avatars';
-import './quiz.css';
+import globalConstants from '../../constants/globalConstants';
+import shuffle from '../../utils/utils';
+import './quiz.scss';
 import { useParams } from "react-router";
+import { useHistory } from "react-router-dom";
 
 function Quiz() {
 
+    let history = useHistory();
+
     let { playerName, avatarId } = useParams();
+
+    const DECK_SIZE = 2;
 
 
     const initialState = {
@@ -32,7 +39,8 @@ function Quiz() {
         question: null,
         answer1: null,
         answer2: null,
-        correctAnswer: null
+        correctAnswer: null,
+        image: null
     }]);
 
     const [loading, setLoading] = useState(true);
@@ -80,23 +88,29 @@ function Quiz() {
     }
     
     useEffect(() => {
-        const baseURL = 'https://marvelheroes-1d22.restdb.io/rest/simpsons-trivia';
-        const headers = {
-            'x-apikey': '5c3f94b966292476821ca01e',
-            'content-type': 'application/json',
-        };
-        fetch(baseURL, {headers: headers})
+        
+        fetch(globalConstants.triviaURL, {headers: globalConstants.headers})
         .then((res) => res.json())
         .then((data) => {
             setQuestions(data);
-            setLoading(false);
-            console.log(data);
+            fetchImageChars();
             
         });
-        
-        function chooseComputerAvatar() {
-            const rnd = Math.floor(Math.random() * avatars.length);
-            setComputerAvatar(avatars[rnd]);
+
+        function fetchImageChars() {
+            fetch(globalConstants.charsTriviaURL, {headers: globalConstants.headers})
+            .then((res) => res.json())
+            .then((data) => {
+                const imageQuestions = generateImageQuestions(data);
+                setQuestions(oldArray => [...oldArray, ...imageQuestions]);
+                dealQuestionSet();
+            });
+
+        }
+
+        function dealQuestionSet() {
+            setQuestions(oldArray => shuffle(oldArray).splice(0, DECK_SIZE));
+            setLoading(false);
         }
 
         chooseComputerAvatar();
@@ -106,6 +120,34 @@ function Quiz() {
 
 
     }, [avatarId]);
+
+    function chooseComputerAvatar() {
+        const rnd = Math.floor(Math.random() * avatars.length);
+        setComputerAvatar(avatars[rnd]);
+    }
+
+    function generateImageQuestions(characters) {
+        const imageQuestions = [];
+        
+        characters.forEach(char => {
+            let rndChar =  Math.floor(Math.random() * (characters.length-1));
+
+            if(characters[rndChar].name === char.name) {
+                rndChar ++;
+            }
+
+            imageQuestions.push({
+                question: 'What is this character name ?',
+                answer1: char.name,
+                answer2: characters[rndChar].name,
+                correctAnswer: 'answer1',
+                image: char.picture
+            })
+        });
+
+        return imageQuestions;
+        
+    }
 
 
     function handleAnswerQuestion(playerAnswer) {
@@ -165,12 +207,28 @@ function Quiz() {
         dispatch({type:'PLAYER_ANSWER', payload: null});
     }
 
-    function nextQuestion(){
+    function nextQuestion() {
         if ((state.questionCounter +1) === questions.length) {
-            console.log('ir pro final page')
+            history.push({
+                pathname: '/GameEnd/',
+                data: {
+                    player: {
+                        score: state.score.player,
+                        name: playerName,
+                        avatar: playerAvatar
+                    },
+                    computer: {
+                        score: state.score.computer,
+                        avatar: computerAvatar
+                    }
+                }
+             })
+            
         } else {
             dispatch({type:'INCREMENT_QUESTION_COUNTER'});
         }
+
+        console.log('qq:',questions);
     }
 
     
@@ -210,10 +268,10 @@ function Quiz() {
                 <section className="playersBG">
                     <div className="container">
                         <div className="row">
-                            <div className="col-md-6 col-sm-6 col-xs-6">
-                                <div className="row">
+                            <div className="col-6">
+                                <div className="row playerLeftSide">
                                     <AnswerBadge status={state.computerAnswerState}></AnswerBadge>
-                                    <div className="col-md-6">
+                                    <div className="col-md-6 playerLeftSide_player">
                                         <Player score={state.score.computer} avatar={computerAvatar}></Player>
                                     </div>
                                     <div className="col-md-6">
@@ -223,7 +281,7 @@ function Quiz() {
                                 </div>
                             </div>
 
-                            <div className="col-md-6 col-sm-6 col-xs-6">
+                            <div className="col-6">
                                 <div className="row">
                                     <AnswerBadge status={state.playerAnswerState}></AnswerBadge>
                                     <div className="col-md-6">

@@ -1,0 +1,14 @@
+.playersBG {
+    padding-top: 20px;
+
+    background: linear-gradient(90deg, rgba(#bde18a,1) 52%, rgba(0,115,207,1) 52%);
+  }
+
+  .playerLeftSide {
+
+    &_player {
+      @media screen and (max-width: 767px) {
+        order: 2;
+      }
+    }
+  }

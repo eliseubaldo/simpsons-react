@@ -1,0 +1,24 @@
+@import '../../index.scss';
+
+.GameEnd {
+
+    &-title {
+        background: $iceGrey;
+        padding: 10px 0;
+    }
+
+    &-resultsContainer {
+        background: $iceBlue;
+        padding: 10px 0;
+    }
+
+    &-winnerBadge {
+        text-align: center;
+        background: url(/assets/images/simpsons-donut.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+    }
+
+
+}
