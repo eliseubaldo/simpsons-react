@@ -1,16 +1,19 @@
 import React from 'react';
 import Player from '../../components/player/player';
+import WinnerLoserBagde from '../../components/winnerLoserBadge/winnerLoserBadge';
 import { useHistory } from "react-router-dom";
+import TieBadge from '../../components/tieBadge/tieBadge';
+import HighScores from '../../components/highScores/highScores';
 import './gameend.scss';
 
 function GameEnd() {
 
     let history = useHistory();
 
-    // delete after
+    // // delete after
     const papaer = {
         player: {
-            score: 2,
+            score: 6,
             name: 'eli',
             avatar: {
                 "charname":"Apu",
@@ -26,24 +29,40 @@ function GameEnd() {
         }
     }
     
-    // const { data } = history.location || papaer;
+    //const { data } = history.location || papaer;
     const data = papaer; // delete after
     
 
-    let winner;
+    let winner = {
+        type: null,
+        score: null,
+        name: null
+    };
 
     if (data.player.score > data.computer.score) {
-        winner = 'player';
+        winner = {
+            type: 'player',
+            score: data.player.score,
+            name: data.player.name
+        };
     } else if (data.player.score < data.computer.score) {
-        winner = 'computer';
+        winner = {
+            type: 'computer',
+            score: data.computer.score,
+            name: data.computer.avatar.charname
+        };
     } else {
-        winner = 'tie';
+        winner = {
+            type: 'tie',
+            score: null,
+            name: null
+        };
     }
 
 
     return (
         <section className="GameEnd">
-            <div className="GameEnd-title">
+            <div className="GameEnd-title animate__animated animate__slideInUp">
                 <div className="container">
                     <div className="row text-center mt-3">
                         <div className="col-md-12">
@@ -53,7 +72,7 @@ function GameEnd() {
                 </div>
             </div>
 
-        <div className="GameEnd-resultsContainer">
+        <div className="GameEnd-resultsContainer animate__animated animate__slideInLeft">
             <div className="container">
                 <div className="row text-center">
                     <div className="col-md-12">
@@ -63,38 +82,39 @@ function GameEnd() {
 
                 <div className="row justify-content-center mt-4">
                     <div className="col-md-3">
-                        { winner === 'player' || winner === 'tie' ? 
+                        { winner.type === 'player' || winner.type === 'tie' ? 
                             <Player score={data.computer.score} avatar={data.computer.avatar}></Player> : null
                         }
                         
                     </div>
                     <div className="col-md-6">
                         <div className="GameEnd-winnerBadge">
-                            { winner === 'player' &&
-                                <Player score={data.player.score} playerName={data.player.name} avatar={data.player.avatar}></Player> 
+                            { winner.type === 'player' &&
+                                <WinnerLoserBagde score={data.player.score} playerName={data.player.name} avatar={data.player.avatar}></WinnerLoserBagde> 
                             }
-                            { winner === 'computer' &&
+                            { winner.type === 'computer' &&
                                 <div className="GameEnd-winnerBadge">
-                                    winner
-                                    <Player score={data.computer.score} avatar={data.computer.avatar}></Player>
+                                    <WinnerLoserBagde score={data.computer.score} avatar={data.computer.avatar}></WinnerLoserBagde>
                                 </div> 
                             }
 
-                            { winner === 'tie' &&
-                                <div>TIE!</div> 
+                            { winner.type === 'tie' &&
+                                <TieBadge></TieBadge>
                             }
                         </div>
                         
 
                     </div>
                     <div className="col-md-3">
-                        { winner === 'computer' || winner === 'tie' ? 
+                        { winner.type === 'computer' || winner.type === 'tie' ? 
                             <Player score={data.player.score} playerName={data.player.name} avatar={data.player.avatar}></Player>  : null
                         }
                     </div>
                 </div>
             </div>
         </div>
+
+        <HighScores winner={winner}></HighScores>
         </section>
     );
 }

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { withRouter } from 'react-router-dom';
 import './homepage.css';
 
@@ -7,8 +7,6 @@ function Homepage() {
     const Button = withRouter(({history}) => (
         <button className="btn btnStart btn-lg mt-3" onClick={() => {history.push(`/selectAvatar`)}}>Start!</button>
     ));
-
-    const [playerName, setPlayerName] = useState('');
 
     return (
         <section className="homepage">

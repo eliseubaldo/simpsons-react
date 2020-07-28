@@ -1,6 +1,7 @@
 const globalConstants = {
     iconsUrl: '/assets/images/icons/',
     triviaURL:'https://marvelheroes-1d22.restdb.io/rest/simpsons-trivia',
+    triviaHighScoresURL: 'https://marvelheroes-1d22.restdb.io/rest/simpsons-highscores',
     charsTriviaURL: 'https://marvelheroes-1d22.restdb.io/rest/simpsons-chars',
     charsImagesUrl: '/assets/images/chars/',
     headers: {

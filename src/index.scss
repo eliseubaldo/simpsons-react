@@ -19,7 +19,10 @@ body{
 	font-family: 'Varela Round', sans-serif;
 	background-color: #8ed4f8;
 
-
+	@media screen and (min-width: 800px){
+		background-image: url(/assets/images/power-plant.jpg);
+		background-position: bottom center;
+	}
 
 }
 

@@ -1,0 +1,17 @@
+<svg width="563" height="99" xmlns="http://www.w3.org/2000/svg">
+
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="101" width="565" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <g id="svg_49">
+   <polygon id="svg_228" points="102.00900268554688,94.89987182617188 2.868999481201172,94.89987182617188 50.551002502441406,55.501861572265625 2.868999481201172,17.616867065429688 102.00900268554688,17.616867065429688 " stroke-width="4" stroke="#FFFFFF" fill="#CC3333" clip-rule="evenodd" fill-rule="evenodd"/>
+   <polygon id="svg_229" points="456.7929992675781,94.89987182617188 556.3480224609375,94.89987182617188 508.66497802734375,55.501861572265625 556.3480224609375,17.616867065429688 456.7929992675781,17.616867065429688 " stroke-width="4" stroke="#FFFFFF" fill="#CC3333" clip-rule="evenodd" fill-rule="evenodd"/>
+   <rect id="svg_230" height="80.342" width="418.592" stroke-width="4" stroke="#FFFFFF" fill="#CC3333" y="4.226864" x="70.167"/>
+   <line id="svg_231" y2="94.899864" x2="102.009" y1="84.568864" x1="70.167" stroke-width="4" stroke="#FFFFFF" fill="none"/>
+   <line id="svg_232" y2="94.899864" x2="456.793" y1="84.568864" x1="488.759" stroke-width="4" stroke="#FFFFFF" fill="none"/>
+  </g>
+ </g>
+</svg>

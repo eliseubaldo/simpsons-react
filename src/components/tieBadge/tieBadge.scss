@@ -1,0 +1,41 @@
+@import '../../index.scss';
+
+.tieBadgeContainer {
+
+    
+
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &_image {
+        max-width: 100px;
+        width: 18%;
+        z-index: 1;
+    }
+}
+
+.tieBadgeContainer:before {
+    content: "";
+    position: absolute;
+    background-image:  url(/assets/images/tie.svg);
+	background-repeat: no-repeat, no-repeat;
+	background-position: top center, bottom center;
+    background-size: contain;
+    min-height: 200px;
+    min-width:200px;
+    z-index: 0;
+    animation: spin 45s linear infinite;
+    
+}
+
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+  }

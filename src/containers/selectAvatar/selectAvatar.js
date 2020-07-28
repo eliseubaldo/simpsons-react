@@ -47,7 +47,7 @@ function SelectAvatar() {
 
 
                 
-                <div className="row text-center mt-4 justify-content-center">
+                <div className="row text-center mt-4 justify-content-center animate__animated animate__slideInLeft animate__delay-2s">
                     <div className="col-md-8">
                         <div className="row selectAvatar-playerData">
                                 <div className="col-md-4 selectAvatar-avatar-card">
