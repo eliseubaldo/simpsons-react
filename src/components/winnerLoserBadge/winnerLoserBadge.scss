@@ -33,7 +33,7 @@
     padding-top: 10px;
 
     &_avatarNameContainer {
-        background:  url(/assets/images/ribbon.svg);
+        background:  url(../../assets/images/ribbon.svg);
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
@@ -78,7 +78,7 @@
 }
 
 .badgeContainer:before { 
-    background-image:  url(/assets/images/winner.svg);
+    background-image:  url(../../assets/images/winner.svg);
 	background-repeat: no-repeat, no-repeat;
 	background-position: top center, bottom center;
     background-size: contain;

@@ -67,7 +67,8 @@ function Quiz() {
     function reducer(state, action) {
         switch (action.type) {
             case 'INCREMENT_QUESTION_COUNTER':
-                return {...state, questionCounter: state.questionCounter++}
+                console.log('increment question counter');
+                return {...state, questionCounter: action.payload}
             case 'UPDATE_SCORES':
                 console.log('Updating scores');
                 return {...state, score: action.payload}
@@ -238,7 +239,8 @@ function Quiz() {
              })
             
         } else {
-            dispatch({type:'INCREMENT_QUESTION_COUNTER'});
+            const questionNumber = state.questionCounter + 1;
+            dispatch({type:'INCREMENT_QUESTION_COUNTER', payload: questionNumber});
         }
 
         console.log('qq:',questions);

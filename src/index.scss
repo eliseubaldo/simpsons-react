@@ -11,7 +11,7 @@ html {
   }
 
 body{
-	background-image:  url(/assets/images/clouds.png), url(/assets/images/power-plant.jpg);
+	background-image:  url(./assets/images/clouds.png), url(./assets/images/power-plant.jpg);
 	background-repeat: no-repeat, no-repeat;
 	background-position: top center, bottom center;
 	background-size: 100% auto;
@@ -20,7 +20,7 @@ body{
 	background-color: #8ed4f8;
 
 	@media screen and (min-width: 800px){
-		background-image: url(/assets/images/power-plant.jpg);
+		background-image: url(./assets/images/power-plant.jpg);
 		background-position: bottom center;
 	}
 

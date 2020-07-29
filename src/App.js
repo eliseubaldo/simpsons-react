@@ -13,7 +13,7 @@ function App() {
   
   
   return (
-    <Router>
+    <Router basename={'/'}>
     <div className="App container">
       { isLoading ? <Loaderspinner /> : null }
         <Header></Header>

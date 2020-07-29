@@ -5,7 +5,7 @@
 }
 
 .btn-answer{
-    background: url(/assets/images/funky-button.svg) no-repeat;
+    background: url(../../assets/images/funky-button.svg) no-repeat;
     background-size: 100% auto;
     min-height: 58px;
     width: 70%;
@@ -26,7 +26,7 @@
   }
   
   .btn-answer.btn[disabled] {
-    background: url(/assets/images/funky-button.svg) no-repeat;
+    background: url(../../assets/images/funky-button.svg) no-repeat;
     background-size: 100% auto;
     pointer-events: none;
     cursor: not-allowed;
@@ -36,7 +36,8 @@
   }
   
   .btn-answer.active, .btn-answer:active{
-      background: url(/assets/images/funky-button-over.svg) no-repeat;
-    background-size: 100% auto;
+      background-image: url(../../assets/images/funky-button-over.svg);
+      background-repeat: no-repeat;
+      background-size: 100% auto;
     box-shadow: none;
   }
