@@ -17,7 +17,7 @@ function Quiz() {
 
     let { playerName, avatarId } = useParams();
 
-    const DECK_SIZE = 2;
+    const DECK_SIZE = 50;
 
 
     const initialState = {
@@ -136,13 +136,26 @@ function Quiz() {
                 rndChar ++;
             }
 
-            imageQuestions.push({
-                question: 'What is this character name ?',
-                answer1: char.name,
-                answer2: characters[rndChar].name,
-                correctAnswer: 'answer1',
-                image: char.picture
-            })
+            let rndAnswer = Math.floor(Math.random() *2);
+            console.log('rndAnswer:',rndAnswer);
+            if (rndAnswer === 0) {
+                imageQuestions.push({
+                    question: 'What is this character name ?',
+                    answer1: char.name,
+                    answer2: characters[rndChar].name,
+                    correctAnswer: 'answer1',
+                    image: char.picture
+                })
+            } else {
+                imageQuestions.push({
+                    question: 'What is this character name ?',
+                    answer1: characters[rndChar].name,
+                    answer2: char.name,
+                    correctAnswer: 'answer2',
+                    image: char.picture
+                })
+            }
+            
         });
 
         return imageQuestions;

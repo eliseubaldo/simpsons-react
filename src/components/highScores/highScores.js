@@ -27,7 +27,7 @@ function HighScores({winner}) {
                     highScores.splice(highScoreIndex,0,{player: winner.name, score: winner.score, isNew: true});
                 };
                 setHighScores(highScores);
-                //addHighScore();
+                addHighScore();
             } else {
                 setHighScores(data);
             }

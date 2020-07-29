@@ -29,8 +29,8 @@ function GameEnd() {
         }
     }
     
-    //const { data } = history.location || papaer;
-    const data = papaer; // delete after
+    const { data } = history.location || papaer;
+    //const data = papaer; // delete after
     
 
     let winner = {
